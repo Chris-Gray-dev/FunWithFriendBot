@@ -22,9 +22,6 @@ for plugin in PLUGINS:
 @bot.event
 async def on_ready():
     print(f"{bot.user.name} v{__version__}, connected to discord.")
-    x = dir(bot)
-    for a in x:
-        print(a) 
 
 @bot.command()
 async def about(ctx):
