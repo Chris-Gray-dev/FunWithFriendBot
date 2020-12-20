@@ -12,7 +12,7 @@ dotenv.load_dotenv()
 TOKEN = os.getenv('TOKEN')
 
 # Settings
-bot = commands.Bot(command_prefix = "!", intents = intents) # TODO not final
+bot = commands.Bot(command_prefix = ">", intents = intents)
 
 PLUGINS = ["welcome"] # TODO make a system for loading plugins
 for plugin in PLUGINS:
@@ -22,6 +22,9 @@ for plugin in PLUGINS:
 @bot.event
 async def on_ready():
     print(f"{bot.user.name} v{__version__}, connected to discord.")
+    x = dir(bot)
+    for a in x:
+        print(a) 
 
 @bot.command()
 async def about(ctx):
