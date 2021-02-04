@@ -4,7 +4,7 @@ from discord.ext import commands
 import os
 import dotenv
 
-__version__ = "0.0.0.8"
+__version__ = "0.0.0.9"
 # Setup
 print(discord.__version__)
 intents = discord.Intents.default()
@@ -16,7 +16,7 @@ TOKEN = os.getenv('TOKEN')
 bot = commands.Bot(command_prefix = ">", intents = intents)
 
 PLUGINS = ["welcome",
-            "train"] # TODO make a system for loading plugins
+            "train"] # TODO make a system for loading plugins, maybe?
 for plugin in PLUGINS:
     bot.load_extension(plugin)
 
@@ -27,6 +27,6 @@ async def on_ready():
 
 @bot.command()
 async def about(ctx):
-    await ctx.send("")
+    await ctx.send("Im still a work in progress, so dont mind me.")
 
 bot.run(TOKEN)

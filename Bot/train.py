@@ -1,9 +1,8 @@
 import discord
 from discord.ext import commands
+from IDs import ID_DICT as IDs
 
-RILEY_ID = 437665256421195776
-
-MESSAGE = ":train2: {riley} the train goes into a tunnel :train2:" #TODO Move to an dedicated ID.py file
+MESSAGE = ":train2: {riley} the train goes into a tunnel :train2:"
 
 #TODO move to a helper file e.g. helper.py
 def _get_member(members, id): 
@@ -18,7 +17,7 @@ class Train(commands.Cog):
 
     @commands.command() 
     async def train(self, ctx):
-        riley = _get_member(ctx.guild.members,RILEY_ID)
+        riley = _get_member(ctx.guild.members, IDs["Riley"])
         await ctx.send(MESSAGE.format(riley=riley.mention))
 
 def setup(bot):

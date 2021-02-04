@@ -1,23 +1,24 @@
 import discord
 from discord.ext import commands
+from IDs import ID_DICT as IDs
 
 SPECIAL_CHANNELS = ["introductions",
                     "roles",
                     "house-keeping"]
 
-AUTUMN_ID = 279411463595098122
-CHRIS_ID  = 175748823044456459
-ADMINS = [AUTUMN_ID, 
-         CHRIS_ID]
+ADMINS = [IDs["Autumn"], 
+         IDs["Chris"]]
 
 MESSAGE = "Welcome to {guildname}, {name}!\nThis server is for games, events, interests, and friends!\nFor the server rules, please go to {rules}.\nFor introductions, please go to {intro}.\nFor roles, please go to {roles}.\nLet {autumn} or {chris} know which colour you would like to be, and do not hesitate to contact them for help.\nHave fun! :)"
 
+#TODO move to a new helper file
 def _get_channel(channels, name):
     try:
         return [ch for ch in channels if ch.name == name][0]
     except:
         return None
-
+        
+#TODO move to a new helper file
 def _get_member(members, id):
     try:
         return [mem for mem in members if mem.id == id][0]
