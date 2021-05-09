@@ -47,8 +47,8 @@ class Welcome(commands.Cog):
         
         members = [mem for mem in guild.members if mem.id in ADMINS]
 
-        autumn = _get_member(members, AUTUMN_ID)
-        chris  = _get_member(members, CHRIS_ID)
+        autumn = _get_member(members, IDs["Autumn"])
+        chris  = _get_member(members, IDs["Chris"])
 
         await channel.send(MESSAGE.format(guildname=member.guild.name,name=member.mention, rules=rules.mention, intro = intro.mention, roles=roles.mention, autumn=autumn.mention,chris=chris.mention))
 
