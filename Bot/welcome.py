@@ -3,13 +3,12 @@ from discord.ext import commands
 from IDs import ID_DICT as IDs
 
 SPECIAL_CHANNELS = ["introductions",
-                    "roles",
-                    "house-keeping"]
+                    "housekeeping"]
 
 ADMINS = [IDs["Autumn"], 
          IDs["Chris"]]
 
-MESSAGE = "Welcome to {guildname}, {name}!\nThis server is for games, events, interests, and friends!\nFor the server rules, please go to {rules}.\nFor introductions, please go to {intro}.\nFor roles, please go to {roles}.\nLet {autumn} or {chris} know which colour you would like to be, and do not hesitate to contact them for help.\nHave fun! :)"
+MESSAGE = "Welcome to {guildname}, {name}!\nThis server is for games, events, interests, and friends!\nFor the server rules and roles, please go to {rules}.\nFor introductions, please go to {intro}.\nLet {autumn} or {chris} know which colour you would like to be, and do not hesitate to contact them for help.\nHave fun! :)"
 
 #TODO move to a new helper file
 def _get_channel(channels, name):
@@ -42,15 +41,14 @@ class Welcome(commands.Cog):
         channels = [ch for ch in guild.channels if ch.name in SPECIAL_CHANNELS]
 
         intro = _get_channel(channels, SPECIAL_CHANNELS[0]) 
-        roles = _get_channel(channels, SPECIAL_CHANNELS[1])
-        rules = _get_channel(channels, SPECIAL_CHANNELS[2])
+        rules = _get_channel(channels, SPECIAL_CHANNELS[1])
         
         members = [mem for mem in guild.members if mem.id in ADMINS]
 
         autumn = _get_member(members, IDs["Autumn"])
         chris  = _get_member(members, IDs["Chris"])
 
-        await channel.send(MESSAGE.format(guildname=member.guild.name,name=member.mention, rules=rules.mention, intro = intro.mention, roles=roles.mention, autumn=autumn.mention,chris=chris.mention))
+        await channel.send(MESSAGE.format(guildname=member.guild.name,name=member.mention, rules=rules.mention, intro = intro.mention, autumn=autumn.mention,chris=chris.mention))
 
 def setup(bot):
     bot.add_cog(Welcome(bot))
